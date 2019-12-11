@@ -1,10 +1,14 @@
+<a href="{% url 'create_todo' %}">Add todo</a>
+
+
+
 {% for todo in todos %}
 <ul>
     <li>
             <h2>{{ todo.title }}</h2>
             <h3>{{ todo.description }}</h3>
             <p>written by {{ todo.author }} on the {{ todo.date_created }}</p>
-            <a href="{% url 'todo_detail' todo.pk %}">Detail</a>
+            <a href="{% url 'todo_detail' todo.pk %}">Detail</a> | <a href="{% url 'update_todo' todo.pk %}">Edit</a>
     </li>
     
 </ul>

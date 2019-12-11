@@ -41,4 +41,22 @@ class TestViews(TestCase):
         self.assertEquals(no_response.status_code, 404)
         self.assertContains(response, 'Sweep the house')
 
-    
+    def test_create_todo_view(self):
+        response = self.client.post('/todo/new/', {
+            'title': 'Welcome to a wonderful world',
+            'description': 'About to understand the meaning of things',
+            'author': self.user
+        })
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, 'About to understand the meaning of things')
+        self.assertTemplateUsed(response, 'form.html')
+
+    def test_update_todo_view(self):
+        response = self.client.post('/todo/1/edit/', {
+            'title': 'Welcome',
+            'description': 'About to understand the meaning',
+            'author': self.user
+        })
+        self.assertTemplateUsed(response, 'update.html')
+        self.assertEquals(response.status_code, 200)
+        self.assertContains(response, self.user)

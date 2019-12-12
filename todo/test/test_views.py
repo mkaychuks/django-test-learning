@@ -65,5 +65,4 @@ class TestViews(TestCase):
 
     def test_delete_todo_view(self):
         response = self.client.get(reverse('delete_todo', args='1'))
-        if response.status_code != 200:  # tests that the status_code redirets 302
-            self.assertEquals(response.status_code, 302)
+        self.assertRedirects(response, reverse('todo_list'))

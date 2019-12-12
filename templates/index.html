@@ -8,7 +8,7 @@
             <h2>{{ todo.title }}</h2>
             <h3>{{ todo.description }}</h3>
             <p>written by {{ todo.author }} on the {{ todo.date_created }}</p>
-            <a href="{% url 'todo_detail' todo.pk %}">Detail</a> | <a href="{% url 'update_todo' todo.pk %}">Edit</a>
+            <a href="{% url 'todo_detail' todo.pk %}">Detail</a> | <a href="{% url 'update_todo' todo.pk %}">Edit</a> | <a href="{% url 'delete_todo' todo.pk %}">Delete</a>
     </li>
     
 </ul>

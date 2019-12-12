@@ -38,6 +38,7 @@ def create_todo(request):
     template_name = 'form.html'
     return render(request, template_name, context)
 
+
 def update_todo(request, pk):
     todo = get_object_or_404(Todo, pk=pk)
     form = TodoForm()
@@ -53,3 +54,9 @@ def update_todo(request, pk):
     }
     template_name = 'update.html'
     return render(request, template_name, context)
+
+
+def delete_todo(request, pk):
+    todo = get_object_or_404(Todo, pk=pk)
+    todo.delete()
+    return redirect('todo_list')
